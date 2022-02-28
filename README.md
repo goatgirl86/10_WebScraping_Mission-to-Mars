@@ -7,7 +7,7 @@
 The purposeof this challeng was to build an app that will scrape different websites for data pertaining to a Mission to Mars and then build an accompanying HTML page to display the findings.
 
 ### Data Analyzed
-Weather Data:
+Mars Data:
 -	Mars Hemispheres website: https://marshemispheres.com/ 
 
 ### Deliverables 
