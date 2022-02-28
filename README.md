@@ -32,6 +32,7 @@ Screenshot 2: Top half of my html with styling of headings and button.
 
 
 
+
 Screenshot 3: Bottom half of my html with styling heading and images.
 
  ![image](https://user-images.githubusercontent.com/92705556/155920274-5a923b0b-a95d-4d2e-99e5-3429651bae46.png)
