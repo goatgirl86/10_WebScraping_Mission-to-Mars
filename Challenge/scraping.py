@@ -11,6 +11,7 @@ def scrape_all():
     browser = Browser('chrome', **executable_path, headless=True)
 
     news_title, news_paragraph = mars_news(browser)
+    hemisphere_image_urls = hemispheres(browser)
 
 # Run all scraping functions and store results in dictionary
     data = {
@@ -18,7 +19,9 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
+        "hemispheres": hemisphere_image_urls,
         "last_modified": dt.datetime.now()
+        
 }
 
 # Stop webdriver and return data
@@ -94,7 +97,37 @@ def mars_facts():
     df.set_index('Description', inplace=True)
 
     # Convert dataframe into HTML format, add bootstrap
-    return df.to_html(classes="table table-striped")
+    return df.to_html(bold_rows=True, classes="table table-bordered table-hover", border=True)
+
+#Create Mars Hemispheres func to run Mars hemisphere scrape info
+def hemispheres(browser):
+    url = 'https://marshemispheres.com/'
+    browser.visit(url)
+
+    hemisphere_image_urls = []
+
+  
+    html_soup = soup(browser.html, 'html.parser')
+    all_hems= html_soup.find('div', class_='collapsible results')
+    single_hem = all_hems.find_all('div', class_='item')
+
+    for item in single_hem:
+        hem_dict = {}
+
+        title = item.find('h3').get_text()
+        browser.links.find_by_partial_text(title).click()
+
+        browser.links.find_by_partial_text('Sample').click()
+        sample = browser.links.find_by_text('Sample')
+        img_url = sample['href']
+        hem_dict['img_url'] = img_url
+        hem_dict['title'] = title
+
+        hemisphere_image_urls.append(hem_dict)
+
+        browser.back()
+
+    return hemisphere_image_urls
 
 if __name__ == "__main__":
 
