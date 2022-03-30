@@ -4,7 +4,7 @@
 -	Related GitHub Folders: Challenge
 
 ### Purpose
-The purposeof this challeng was to build an app that will scrape different websites for data pertaining to a Mission to Mars and then build an accompanying HTML page to display the findings.
+The purpose of this challenge was to build an app that will scrape different websites for data pertaining to a Mission to Mars and then build an accompanying HTML page to display the findings.
 
 ### Data Analyzed
 Mars Data:
